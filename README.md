@@ -1,1 +1,1 @@
-# xq-test-tooling
+# XQ-Test-Tooling
