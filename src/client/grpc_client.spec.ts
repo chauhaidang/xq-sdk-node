@@ -1,4 +1,4 @@
-import GrpcClient from "./grpc_client"
+import {GrpcClient} from "./grpc_client"
 const protoPath = `${__dirname}/account.proto`
 const baseUrl = 'localhost:8080'
 

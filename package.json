@@ -2,8 +2,7 @@
   "name": "xq-test-tooling",
   "version": "0.0.2",
   "description": "nodejs test tooling",
-  "main": "dist/lib/index.js",
-  "types": "dist/lib/index.d.ts",
+  "main": "index.ts",
   "sideEffects": false,
   "author": "chauhaidang1 <chauhaidang1@gmail.com>",
   "repository": "https://github.com/chauhaidang/xq-test-tooling",
@@ -20,8 +19,8 @@
     "package.json"
   ],
   "scripts": {
-    "prepublishOnly": "cp package.json ./dist && cp README.md ./dist && cp CHANGELOG.md ./dist",
-    "cp": "rm -rf ./dist/ && tsc --build tsconfig.json",
+    "metadata": "cp package.build.json ./dist/package.json && cp README.md ./dist && cp CHANGELOG.md ./dist",
+    "cp": "rm -rf ./dist/ && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && yarn metadata",
     "test": "jest",
     "golive": "cd ./dist && yarn publish"
   },

@@ -3,8 +3,8 @@ import {loadSync, Options, PackageDefinition, ProtobufTypeDefinition} from "@grp
 
 declare type AnyGrpcObject = GrpcObject | ServiceClientConstructor | ProtobufTypeDefinition
 
-export default class GrpcClient {
-  private packageDef: PackageDefinition
+export class GrpcClient {
+  packageDef: PackageDefinition
   private client
   private listNameMethods: string[]
 

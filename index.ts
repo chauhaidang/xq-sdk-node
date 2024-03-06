@@ -1,1 +1,1 @@
-export * as GrpcClient from "./src/client/grpc_client"
+export { GrpcClient } from "./src/client/grpc_client"
