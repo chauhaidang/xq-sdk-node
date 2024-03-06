@@ -1,11 +1,11 @@
-const GrpcClient = require('./grpc_client')
+import GrpcClient from "./grpc_client"
 const protoPath = `${__dirname}/account.proto`
 const baseUrl = 'localhost:8080'
 
 describe('GrpcClient', () => {
   let client = null
   beforeEach(() => {
-    client = new GrpcClient(protoPath, 'account.v1', 'AccountService', baseUrl)
+    client = new GrpcClient(protoPath, 'account.v1', 'AccountService', baseUrl, {})
   })
 
   it('should be instantiated', async () => {

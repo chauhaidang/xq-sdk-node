@@ -1,12 +1,16 @@
-const grpc = require("@grpc/grpc-js")
-const protoLoader = require("@grpc/proto-loader");
+import {GrpcObject, ServiceClientConstructor, loadPackageDefinition, credentials, Metadata, MetadataValue} from "@grpc/grpc-js"
+import {loadSync, Options, PackageDefinition, ProtobufTypeDefinition} from "@grpc/proto-loader"
 
+declare type AnyGrpcObject = GrpcObject | ServiceClientConstructor | ProtobufTypeDefinition
 
-class GrpcClient {
+export default class GrpcClient {
+  private packageDef: PackageDefinition
+  private client
+  private listNameMethods: string[]
 
-  constructor(protoPath, packageName, service, host, options = {}) {
+  constructor(protoPath, packageName, service, host, options: Options) {
 
-    this.packageDef = protoLoader.loadSync(protoPath, {
+    this.packageDef = loadSync(protoPath, {
       keepCase: (options.keepCase === undefined) ? true : options.keepCase,
       longs: (options.longs === undefined) ? String : options.longs,
       enums: (options.enums === undefined) ? String : options.enums,
@@ -16,7 +20,7 @@ class GrpcClient {
 
     const proto = ((packageName) => {
       const packagePath = packageName.split('.');
-      let grpcObject = grpc.loadPackageDefinition(this.packageDef);
+      let grpcObject: AnyGrpcObject = loadPackageDefinition(this.packageDef);
 
       for (let i = 0; i <= packagePath.length - 1; i++) {
         grpcObject = grpcObject[packagePath[i]];
@@ -26,7 +30,7 @@ class GrpcClient {
 
     const listMethods = this.packageDef[`${packageName}.${service}`];
 
-    this.client = new proto[service](host, grpc.credentials.createInsecure());
+    this.client = new proto[service](host, credentials.createInsecure());
     this.listNameMethods = [];
 
     for (const key in listMethods) {
@@ -71,10 +75,10 @@ class GrpcClient {
   }
 
   generateMetadata(metadata) {
-    let metadataGrpc = new grpc.Metadata();
+    let metadataGrpc = new Metadata();
 
     for (let [key, val] of Object.entries(metadata)) {
-      metadataGrpc.add(key, val);
+      metadataGrpc.add(key, val as MetadataValue);
     }
     return metadataGrpc;
   }
@@ -91,5 +95,3 @@ class GrpcClient {
     return this.listNameMethods;
   }
 }
-
-module.exports = GrpcClient

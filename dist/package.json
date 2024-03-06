@@ -1,8 +1,9 @@
 {
   "name": "xq-test-tooling",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "nodejs test tooling",
   "main": "dist/lib/index.js",
+  "types": "dist/lib/index.d.ts",
   "sideEffects": false,
   "author": "chauhaidang1 <chauhaidang1@gmail.com>",
   "repository": "https://github.com/chauhaidang/xq-test-tooling",
@@ -13,14 +14,16 @@
     "@grpc/proto-loader": "^0.7.10"
   },
   "files": [
-    "lib",
+    "dist",
     "CHANGELOG.md",
     "README.md",
     "package.json"
   ],
   "scripts": {
-    "cp": "rm -rf ./dist/ && tsc --build tsconfig.json && cp package.json ./dist",
-    "test": "jest"
+    "prepublishOnly": "cp package.json ./dist && cp README.md ./dist && cp CHANGELOG.md ./dist",
+    "cp": "rm -rf ./dist/ && tsc --build tsconfig.json",
+    "test": "jest",
+    "golive": "cd ./dist && yarn publish"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
