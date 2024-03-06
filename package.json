@@ -22,7 +22,7 @@
     "metadata": "cp package.build.json ./dist/package.json && cp README.md ./dist && cp CHANGELOG.md ./dist",
     "cp": "rm -rf ./dist/ && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && yarn metadata",
     "test": "jest",
-    "golive": "cd ./dist && yarn publish"
+    "golive": "yarn publish ./dist"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
