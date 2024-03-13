@@ -19,16 +19,19 @@
     "package.json"
   ],
   "scripts": {
-    "metadata": "cp package.build.json ./dist/package.json && cp README.md ./dist && cp CHANGELOG.md ./dist",
+    "metadata": "cp package.build.json ./dist/package.json && cp README.md ./dist && cp CHANGELOG.md ./dist && cp LICENSE ./dist",
     "cp": "rm -rf ./dist/ && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && yarn metadata",
     "test": "jest",
+    "blackbox": "jest -c jest.config.blackbox.js",
     "golive": "yarn publish ./dist"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
+    "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   }
 }

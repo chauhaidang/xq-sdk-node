@@ -6,7 +6,8 @@
     "declaration": true,
     "outDir": "./dist/lib/es6",
     "moduleResolution": "node",
-    "declarationMap": true
+    "declarationMap": true,
+    "noImplicitAny": false
   },
-  "include": ["src/**/*", "index.ts"],
+  "include": ["src/**/*", "index.ts", "blackbox_test/**/*"],
  }
