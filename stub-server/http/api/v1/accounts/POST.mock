@@ -1,0 +1,21 @@
+{{#if request.body.name}}
+HTTP/1.1 200 OK
+X-Requested-By: Shubhendu Madhukar
+Content-Type: application/json
+Response-Delay: {{num_between lower=500 upper=600}}
+
+{
+    "accountName": "#{{capture from='body' using='jsonpath' selector='$.name'}}", 
+    "amount": 50.00
+}
+{{else}}
+HTTP/1.1 200 OK
+X-Requested-By: Shubhendu Madhukar
+Content-Type: application/json
+
+{
+    "accountName": "David", 
+    "amount": 50.00
+}
+{{/if}}
+

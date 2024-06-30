@@ -1,0 +1,9 @@
+{
+    "id": {{num_between lower=500 upper=600}},
+    "title": "something",
+    "metadata": {
+        "id": "{{capture using='jsonpath' selector='$.id'}}",
+        "title": "{{capture using='jsonpath' selector='$.title'}}",
+        "stubId": "{{capture from='metadata' key='x-stub-id'}}"
+    }
+}

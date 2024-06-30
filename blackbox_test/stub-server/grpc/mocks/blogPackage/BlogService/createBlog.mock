@@ -1,4 +1,0 @@
-{
-    "id": {{capture using='jsonpath' selector='$.id'}},
-    "title": "{{capture using='jsonpath' selector='title'}}"
-}

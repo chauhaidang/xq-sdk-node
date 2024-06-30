@@ -1,0 +1,26 @@
+{
+  "records": {
+    "b9e8c849-87a0-4b7d-a9d1-4df041259ad7": {
+      "stubId": "b9e8c849-87a0-4b7d-a9d1-4df041259ad7",
+      "requestBody": {
+        "nickname": [
+          "dang"
+        ]
+      },
+      "requestUrl": "/hello-world",
+      "requestMethod": "POST",
+      "requestHeader": {
+        "x-stub-id": "b9e8c849-87a0-4b7d-a9d1-4df041259ad7",
+        "content-type": "application/json",
+        "user-agent": "PostmanRuntime/7.36.1",
+        "accept": "*/*",
+        "cache-control": "no-cache",
+        "postman-token": "eeb9e8c7-aae2-49d6-9980-980e56d19a15",
+        "host": "localhost:8080",
+        "accept-encoding": "gzip, deflate, br",
+        "connection": "keep-alive",
+        "content-length": "28"
+      }
+    }
+  }
+}

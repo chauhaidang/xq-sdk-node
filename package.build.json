@@ -1,12 +1,12 @@
 {
   "name": "xq-tooling",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "nodejs test tooling",
   "main": "./lib/es5/index.js",
   "module": "./lib/es6/index.js",
   "sideEffects": false,
   "author": "chauhaidang1 <chauhaidang1@gmail.com>",
-  "repository": "https://github.com/chauhaidang/xq-test-tooling",
+  "repository": "https://github.com/chauhaidang/xq-sdk-node",
   "license": "MIT",
   "private": false,
   "files": [

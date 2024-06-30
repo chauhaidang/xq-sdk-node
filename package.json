@@ -1,6 +1,6 @@
 {
   "name": "xq-test-tooling",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "nodejs test tooling",
   "main": "index.ts",
   "sideEffects": false,
@@ -20,10 +20,11 @@
   ],
   "scripts": {
     "metadata": "cp package.build.json ./dist/package.json && cp README.md ./dist && cp CHANGELOG.md ./dist && cp LICENSE ./dist",
-    "cp": "rm -rf ./dist/ && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && yarn metadata",
+    "build": "rm -rf ./dist/ && tsc --build tsconfig.es5.json && tsc --build tsconfig.es6.json && yarn metadata",
     "test": "jest",
     "blackbox": "jest -c jest.config.blackbox.js",
-    "golive": "yarn publish ./dist"
+    "golive": "yarn publish ./dist",
+    "stub": "cd ./stub-server && camouflage -c config.yml"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",

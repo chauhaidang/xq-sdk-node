@@ -8,8 +8,8 @@ ssl:
   root_cert: "./certs/root.cert"
 protocols:
   http:
-    enable: false
-    mocks_dir: "./mocks"
+    enable: true
+    mocks_dir: "./http"
     port: 8080
   https:
     enable: false
@@ -23,7 +23,7 @@ protocols:
     port: 8082
   grpc:
     enable: true
-    host: localhost
+    host: 0.0.0.0
     port: 4312
     mocks_dir: "./grpc/mocks"
     protos_dir: "./grpc/protos"
@@ -38,6 +38,13 @@ protocols:
           - add
           - substract
           - ping
+  soap:
+    enable: false
+    mocks_dir: "./soap/mocks"
+    port: 8100
+    services:
+      - wsdl: ./soap/countryservice.wsdl
+        path: /countryinfo
 backup:
   enable: false
   cron: "0 * * * *" # Hourly Backup
@@ -45,11 +52,16 @@ cache:
   enable: false
   ttl_seconds: 300
 injection:
-  enable: false
+  enable: true
 origins:
-  - http://localhost:3000/
-  - http://localhost:3001/
-  - http://localhost:5000/
+  - http://localhost:3000
+  - http://localhost:3001
+  - http://localhost:5000
+validation:
+  enable: false
+  schemas:
+    - type: OpenApi
+      url: https://raw.githubusercontent.com/OAI/OpenAPI-Specification/main/examples/v3.0/petstore.json
 # ext_helpers: "./custom_handlebar.json"
 # ext_data_source:
 #   pg:
